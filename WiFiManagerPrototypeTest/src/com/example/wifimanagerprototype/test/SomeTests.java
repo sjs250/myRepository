@@ -1,5 +1,6 @@
 package com.example.wifimanagerprototype.test;
 
+import com.example.wifimanagerprototype.CameraAZActivity;
 import com.example.wifimanagerprototype.CompassAZActivity;
 import com.example.wifimanagerprototype.CompassActivity;
 import com.example.wifimanagerprototype.MainActivity;
@@ -24,18 +25,19 @@ public class SomeTests extends ActivityInstrumentationTestCase2<MainActivity> {
 	
 	public void testSomething() throws Exception {
 
-			solo.assertCurrentActivity("Expected NoteEditor activity", MainActivity.class); 
+			solo.assertCurrentActivity("Expected mainactivity activity", MainActivity.class); 
 			System.out.println(solo.searchText("location"));
 			solo.clickOnText("location");
 			solo.sleep(1000);
 			String s = solo.getCurrentActivity().toString();
 			Log.d("ROBO", s);
-			solo.assertCurrentActivity("should be compass", CompassAZActivity.class);
-			
-//			if (!solo.searchText("Map"))
-//				fail();
-		//	solo.clickOnText("Map");
-		//	solo.assertCurrentActivity("Expected map activity", "MapActivity"); 
+			solo.assertCurrentActivity("should be CompassAZActivity", CompassAZActivity.class);
+			solo.goBack();
+			solo.sleep(1000);
+			solo.assertCurrentActivity("Expected mainactivity activity", MainActivity.class);
+			solo.clickOnText("camera");
+			solo.sleep(1000);
+			solo.assertCurrentActivity("Expected CameraAZActivty activity", CameraAZActivity.class);
 		    }
 
 }
