@@ -70,6 +70,7 @@ public class SomeTests extends ActivityInstrumentationTestCase2<MainActivity> {
 		solo.assertCurrentActivity("should be settings activity", SettingsActivity.class);	
 	}
 	
+	
 	public void testMenuB() throws Exception {
 		solo.clickOnText("location");
 		solo.clickOnText("eduroam");
@@ -123,14 +124,40 @@ public class SomeTests extends ActivityInstrumentationTestCase2<MainActivity> {
 		solo.assertCurrentActivity("should be Main", MainActivity.class);
 	}
 	
-	// the following 2 tests can only be run on an android enabled device, due to issues
+	//tests the buttons which screen out results from a search, this test is presently done using x and y co-ordinates
+	//so may not work correctly on a device not of 480-800 dimensions
+	public void testScreeningButtons() throws Exception {
+		solo.clickOnText("location");
+		solo.sleep(1000);
+		solo.clickOnScreen(250, 750);
+		solo.sleep(1000);
+		solo.clickOnScreen(350, 750);
+		solo.sleep(1000);
+		solo.clickOnScreen(150, 750);
+		solo.goBack();
+		solo.clickOnText("compass");
+		solo.clickOnScreen(250, 750);
+		solo.sleep(1000);
+		solo.clickOnScreen(350, 750);
+		solo.sleep(1000);
+		solo.clickOnScreen(150, 750);
+	}
+	
+	public void testInfoCompass() {
+		solo.clickOnText("location");
+		solo.clickOnText("eduroam");	
+		solo.clickOnImage(1);
+		solo.sleep(1000);
+	}
+	
+	// the following 4 tests can only be run on an android enabled device, due to issues
 	// with googlemaps and lack of functionality of a camera device on an emulator
 	
 //	public void testMenuE() throws Exception {
 //		solo.clickOnText("Camera");
 //		solo.clickOnText("eduroam");
 //		solo.sleep(1000);
-//		solo.assertCurrentActivity("should be CameraAZActivity", CameraAZActivity.class);	
+//		solo.assertCurrentActivity("should be CameraActivity", CameraActivity.class);	
 //		solo.clickOnMenuItem("Favourite");
 //		solo.sleep(1000);
 //		solo.assertCurrentActivity("should be camera favourites", CameraFavouritesActivity.class);
@@ -161,7 +188,22 @@ public class SomeTests extends ActivityInstrumentationTestCase2<MainActivity> {
 //		solo.assertCurrentActivity("should be Main", MainActivity.class);
 //		}
 			
-	
+//	public void testInfoCheckboxCamera() {
+//		solo.clickOnText("map");
+//		solo.clickOnImage(1);
+//		solo.clickOnText("Ok");
+//		solo.sleep(1000);
+//		solo.clickOnCheckBox(0);
+//	}
+//
+//	public void testInfoCheckboxMap() {
+//		solo.clickOnText("Camera");
+//		solo.clickOnText("eduroam");	
+//		solo.clickOnImage(1);
+//		solo.clickOnText("Ok");
+//		solo.sleep(1000);
+//		solo.clickOnCheckBox(0);
+//	}
 	
 	
 	@Override
