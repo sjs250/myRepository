@@ -36,10 +36,10 @@ public class SomeTests extends ActivityInstrumentationTestCase2<MainActivity> {
 	public void testLinks() throws Exception {
 			solo.assertCurrentActivity("Expected mainactivity activity", MainActivity.class); 
 //			these tests wont work on on emulator due to issues with googlemaps, but should be fine on a phone device
-//			solo.clickOnText("map");
-//			solo.sleep(1000);
-//			solo.assertCurrentActivity("should be map", MapActivity.class);
-//			solo.goBack();
+			solo.clickOnText("map");
+			solo.sleep(1000);
+			solo.assertCurrentActivity("should be map", MapActivity.class);
+			solo.goBack();
 			solo.clickOnText("location");
 			solo.sleep(1000);
 			String s = solo.getCurrentActivity().toString();
@@ -50,6 +50,7 @@ public class SomeTests extends ActivityInstrumentationTestCase2<MainActivity> {
 			solo.clickOnText("eduroam");
 			solo.sleep(1000);
 			solo.assertCurrentActivity("should be CompassActivity", CompassActivity.class);
+			solo.goBack();
 			solo.goBack();
 			solo.goBack();
 			solo.sleep(1000);
